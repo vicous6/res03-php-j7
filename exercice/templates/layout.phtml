@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Le site dont vous êtes le héros
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body >
+
+
+
+<?php  
+
+require 'partials/_header.phtml';
+
+
+
+        if($template === "homepage"){
+            require 'homepage/homepage.phtml';
+        }else if ($template === "login"){
+            require 'login/login.phtml';
+        }
+        else if($template === "register"){
+            require 'register/register.phtml';
+        }
+        else if($template === "account"){
+            require 'account/account.phtml';
+        };
+
+
+
+require 'partials/_footer.phtml';
+?>
+
+
+</body>
+</html>
