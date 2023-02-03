@@ -26,14 +26,14 @@ $soloUser = $query->fetch(PDO::FETCH_ASSOC);
 
 
 $newUser = new User($soloUser["first_name"],$soloUser["last_name"],$soloUser["email"],$soloUser["password"]);
+$newUser-> setId($soloUser["id"]);
+// var_dump($newUser);
 
-var_dump($newUser);
-
-
+return $newUser;
     
 };
 
-function saveUser(User $user) {
+function saveUser(User $user): User{
     
         
 $db = new PDO(
@@ -56,15 +56,20 @@ $query = $db->prepare('INSERT INTO users VALUES (null, :firstName,:lastName,:ema
 $query->execute($parameters);
 $soloUser = $query->fetchAll(PDO::FETCH_ASSOC);
 
+// var_dump($soloUser);
 
+return loadUser($user -> getEmail());
 }
 
-$userrrr = new User("vitor","oustiakine","vicous@free.fr","perco");
-saveUser($userrrr );
-var_dump($userrrr);
+$userrrr = new User("erfze","zeezrf","vierverfez@free.fr","ergfe");
+
+$saveResult= saveUser($userrrr);
+
+var_dump($saveResult);
 
 
-loadUser("vicous@free.fr")
-
+// $load = loadUser("vicous@free.fr");
+// var_dump($load);
+// echo "voici le user demandé";
 ?>
 
