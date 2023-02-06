@@ -2,5 +2,5 @@
 
 $template = "account";
 
-require "../templates/layout.phtml"
+require "templates/layout.phtml"
 ?>

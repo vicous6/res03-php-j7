@@ -20,21 +20,7 @@
 
 require 'partials/_header.phtml';
 
-
-
-        if($template === "homepage"){
-            require 'homepage/homepage.phtml';
-        }else if ($template === "login"){
-            require 'login/login.phtml';
-        }
-        else if($template === "register"){
-            require 'register/register.phtml';
-        }
-        else if($template === "account"){
-            require 'account/account.phtml';
-        };
-
-
+require $template.'/'.$template.'.phtml';
 
 require 'partials/_footer.phtml';
 ?>

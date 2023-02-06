@@ -1,10 +1,11 @@
 
 <?php 
-    require "../models/User.php";
+// getcwd();
+    require "models/User.php";
 
 
 
-function loadUser(string $email): User{
+function loadUser(string $email):? User{
     
 
     $db = new PDO(
@@ -22,7 +23,13 @@ $query = $db->prepare('SELECT * FROM users WHERE email = :email');
 	];
 	
 $query->execute($parameters);
+
 $soloUser = $query->fetch(PDO::FETCH_ASSOC);
+
+if($soloUser === false){
+    
+    return null;
+}
 
 
 $newUser = new User($soloUser["first_name"],$soloUser["last_name"],$soloUser["email"],$soloUser["password"]);
@@ -61,11 +68,11 @@ $soloUser = $query->fetchAll(PDO::FETCH_ASSOC);
 return loadUser($user -> getEmail());
 }
 
-$userrrr = new User("erfze","zeezrf","vierverfez@free.fr","ergfe");
+// $userrrr = new User("erfze","zeezrf","vierverfez@free.fr","ergfe");
 
-$saveResult= saveUser($userrrr);
+// $saveResult= saveUser($userrrr);
 
-var_dump($saveResult);
+// var_dump($saveResult);
 
 
 // $load = loadUser("vicous@free.fr");
